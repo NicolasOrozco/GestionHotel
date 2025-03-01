@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.gestionhotel;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class GestorReservas {
@@ -26,45 +27,52 @@ public class GestorReservas {
         return instancia;
     }
     //-------------------Cruds Reservas--------------------//
-    public boolean verificarReserva(String dniCliente, String numeroHabitacion){
+
+    public boolean verificarReserva(String dniCliente, String numeroHabitacion, LocalDate fechaEntrada) {
         boolean verificado = false;
         for(Reserva reserva : reservas){
-            if(reserva.getCliente().getDni().equals(dniCliente)&&reserva.getHabitacion().getNumero().equals(numeroHabitacion)){
+            if(reserva.getCliente().getDni().equals(dniCliente) && reserva.getHabitacion().getNumero().equals(numeroHabitacion) && reserva.getFechaEntrada().equals(fechaEntrada)){
                 verificado = true;
             }
         }
         return verificado;
     }
+
     public void agregarReserva(Reserva reserva){
         try {
-            if (verificarReserva(reserva.getCliente().getDni(), reserva.getHabitacion().getNumero())) {
+            if (verificarReserva(reserva.getCliente().getDni(), reserva.getHabitacion().getNumero(),reserva.getFechaEntrada())) {
+                throw new Exception("Ya existe una reserva con esos datos");
             }
             reservas.add(reserva);
-            System.out.println("Reserva agregada con exito");
+            System.out.println("Reserva agregada con éxito");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    public void actualizarReservas(String dniCliente, String numeroHabitacion, Habitacion actualizada){
+
+    public void actualizarReservas(String dniCliente, String numeroHabitacion, Reserva actualizada){
         try{
-            boolean verificado = false;
+            boolean encontrado = false;
             for(Reserva reserva: reservas)
             {
-                if(reserva.getCliente().getDni().equals(dniCliente)&&reserva.getHabitacion().getNumero().equals(numeroHabitacion)){
+                if(reserva.getCliente().getDni().equals(dniCliente) && reserva.getHabitacion().getNumero().equals(numeroHabitacion)){
                     reserva.setFechaEntrada(actualizada.getFechaEntrada());
                     reserva.setFechaSalida(actualizada.getFechaSalida());
                     reserva.setCliente(actualizada.getCliente());
                     reserva.setHabitacion(actualizada.getHabitacion());
-                    verificado = true;
+                    System.out.println("Reserva actualizada");
+                    encontrado = true;
+                    break;
                 }
             }
-            if(!verificado){
+            if(!encontrado){
                 System.out.println("Reserva no encontrada");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
     public void eliminarReserva(String dniCliente, String numeroHabitacion){
         try{
             boolean verificado = false;
@@ -83,6 +91,7 @@ public class GestorReservas {
             System.out.println(e.getMessage());
         }
     }
+
     //-----------Getters y Setters de la clase-------------//
 
     public void setInstancia(GestorReservas instancia) {

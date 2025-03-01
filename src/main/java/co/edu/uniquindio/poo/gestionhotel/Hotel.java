@@ -46,11 +46,20 @@ public class Hotel {
      */
     public void agregarCliente(Cliente cliente) {
         try {
-            if (verificarCliente(cliente.getDni())) {
-                throw new Exception("Ya existe un cliente con esos datos en la base de datos");
+
+            if(cliente == null){
+                throw new Exception("No se ingresó el cliente que se desea agregar");
+                //ret
             }
+
+            if(verificarCliente(cliente.getDni())){
+                System.out.println("El cliente ya se encuentra registrado");
+                return;
+            }
+
             clientes.add(cliente);
             System.out.println("Cliente agregado exitosamente");
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -75,16 +84,21 @@ public class Hotel {
     public void actualizarCliente(String dni, Cliente actualizado) {
         try{
             boolean encontrado = false;
+
+            if(actualizado == null){
+                throw new Exception("Los da");
+            }
             for (Cliente cliente : clientes) {
                 if (cliente.getDni().equals(dni)) {
                     cliente.setNombre(actualizado.getNombre());
                     cliente.setDni(actualizado.getDni());
                     encontrado = true;
+                    System.out.println("Cliente actualizado exitosamente");
                     break;
                 }
             }
             if(!encontrado){
-                throw new Exception("El DNI ingresado no coincide con ningún cliente registrado");
+                System.out.println("El DNI ingresado no coincide con ningún cliente registrado");
             }
         }
         catch (Exception e){
