@@ -44,4 +44,13 @@ public class Cliente {
     public void setReservas(LinkedList<Reserva> reservas) {
         this.reservas = reservas;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nombre='" + nombre + '\'' +
+                ", dni='" + dni + '\'' +
+                ", reservas=" + reservas +
+                '}';
+    }
 }
