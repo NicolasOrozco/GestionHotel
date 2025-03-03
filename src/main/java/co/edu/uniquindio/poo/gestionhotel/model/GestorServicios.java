@@ -115,20 +115,4 @@ public class GestorServicios {
 
     //-----------------------------------------------------//
 
-    //-----------Getters y Setters de la clase-------------//
-
-    public void setInstancia (GestorServicios instancia){
-            this.instancia = instancia;
-        }
-
-    public LinkedList<Servicio> getServicios () {
-            return servicios;
-        }
-
-    public void setServicios (LinkedList < Servicio > servicios) {
-            this.servicios = servicios;
-        }
-
-    //-----------------------------------------------------//
-
 }

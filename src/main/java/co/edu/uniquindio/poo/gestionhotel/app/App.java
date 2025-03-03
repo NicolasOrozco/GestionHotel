@@ -15,6 +15,7 @@ class MenuPrincipal {
     private final MenuClientes menuClientes;
     private final MenuHabitaciones menuHabitaciones;
     private final MenuServicios menuServicios;
+    private final MenuExtra menuExtra;
 
     public MenuPrincipal() {
         Hotel hotel = new Hotel("Hotel");
@@ -42,6 +43,7 @@ class MenuPrincipal {
         this.menuClientes = new MenuClientes(hotel);
         this.menuHabitaciones = new MenuHabitaciones(hotel);
         this.menuServicios = new MenuServicios(hotel);
+        this.menuExtra = new MenuExtra(hotel);
     }
 
     public void mostrarMenu() {
@@ -58,7 +60,8 @@ class MenuPrincipal {
         | 2. Gestión de Clientes                 |
         | 3. Gestión de Habitaciones             |
         | 4. Gestión de Servicios                |
-        | 5. Salir                               |
+        | 5. Funciones extra                     |
+        | 6. Salir                               |
         ==========================================
         
         Seleccione una opción:""");
@@ -87,6 +90,9 @@ class MenuPrincipal {
                     menuServicios.mostrarMenu();
                     break;
                 case 5:
+                    menuExtra.mostrarMenu();
+                    break;
+                case 6:
                     System.out.println("Saliendo...");
                     break;
                 default:

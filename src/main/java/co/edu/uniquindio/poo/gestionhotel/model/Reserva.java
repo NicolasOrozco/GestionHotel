@@ -11,11 +11,11 @@ public class Reserva {
 
     /**
      * Constructor público de la clase
-     * @param id
-     * @param fechaEntrada
-     * @param fechaSalida
-     * @param cliente
-     * @param habitacion
+     * @param id id de reserva
+     * @param fechaEntrada fecha de entrada de la reserva
+     * @param fechaSalida fecha fin de la reserva
+     * @param cliente cliente de la reserva
+     * @param habitacion habitacion de la reserva
      */
     public Reserva(String id, LocalDate fechaEntrada, LocalDate fechaSalida, Cliente cliente, Habitacion habitacion) {
         this.id = id;

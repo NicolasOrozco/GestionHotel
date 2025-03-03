@@ -5,12 +5,11 @@ import co.edu.uniquindio.poo.gestionhotel.model.*;
 import java.util.Scanner;
 
 public class MenuServicios {
-    private Scanner scanner;
-    private Hotel hotel;
+    static Scanner scanner = new Scanner(System.in);
+    private final Hotel hotel;
 
     public MenuServicios(Hotel hotel) {
         this.hotel =hotel;
-        this.scanner = new Scanner(System.in);
     }
 
     public void mostrarMenu(){

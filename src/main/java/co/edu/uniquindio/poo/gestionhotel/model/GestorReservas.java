@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo.gestionhotel.model;
 
-import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class GestorReservas {
@@ -69,17 +68,12 @@ public class GestorReservas {
         reservas.add(reserva);
         System.out.println("Reserva agregada exitosamente.");
 
-        /**if (buscarReserva(reserva.getFechaEntrada(), reserva.getCliente().getDni(), reserva.getHabitacion().getNumero()) != null) {
-            System.out.println("La habitación ya se encuentra registrada.");
-            return;
-        }*/
-
     }
 
     /**
      * Método para actualizar los datos de una reserva.
      *
-     * @praam id de la reserva
+     * @param id de la reserva
      * @param actualizada Reserva con los nuevos datos.
      */
     public void actualizarReserva(String id, Reserva actualizada) {
@@ -124,16 +118,8 @@ public class GestorReservas {
 
     //-----------Getters y Setters de la clase-------------//
 
-    public void setInstancia(GestorReservas instancia) {
-        this.instancia = instancia;
-    }
-
     public LinkedList<Reserva> getReservas() {
         return reservas;
-    }
-
-    public void setReservas(LinkedList<Reserva> reservas) {
-        this.reservas = reservas;
     }
 
     @Override

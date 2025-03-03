@@ -26,7 +26,7 @@ public class Hotel {
     //--------------------CRUD Cliente---------------------//
 
     /**
-     * Método para buscar un cliente por su DNI.
+     * Metodo para buscar un cliente por su DNI.
      *
      * @param dni DNI del cliente a buscar.
      * @return Cliente encontrado o null si no existe.
@@ -46,7 +46,7 @@ public class Hotel {
     }
 
     /**
-     * Método para agregar un nuevo cliente.
+     * Metodo para agregar un nuevo cliente.
      *
      * @param cliente Cliente a agregar.
      */
@@ -65,7 +65,7 @@ public class Hotel {
     }
 
     /**
-     * Método para actualizar los datos de un cliente.
+     * Metodo para actualizar los datos de un cliente.
      *
      * @param dni         DNI del cliente a actualizar.
      * @param actualizado Cliente con los nuevos datos.
@@ -86,7 +86,7 @@ public class Hotel {
     }
 
     /**
-     * Método para eliminar un cliente.
+     * Metodo para eliminar un cliente.
      *
      * @param dni DNI del cliente a eliminar.
      */
@@ -109,7 +109,7 @@ public class Hotel {
     //-------------------CRUD Habitación-------------------//
 
     /**
-     * Método para buscar una habitación por su número.
+     * Metodo para buscar una habitación por su número.
      *
      * @param numero Número de la habitación a buscar.
      * @return Habitación encontrada o null si no existe.
@@ -129,7 +129,7 @@ public class Hotel {
     }
 
     /**
-     * Método para agregar una nueva habitación.
+     * Metodo para agregar una nueva habitación.
      *
      * @param habitacion Habitación a agregar.
      */
@@ -148,7 +148,7 @@ public class Hotel {
     }
 
     /**
-     * Método para actualizar los datos de una habitación.
+     * Metodo para actualizar los datos de una habitación.
      *
      * @param numero      Número de la habitación a actualizar.
      * @param actualizada Habitación con los nuevos datos.
@@ -170,7 +170,7 @@ public class Hotel {
     }
 
     /**
-     * Método para eliminar una habitación.
+     * Metodo para eliminar una habitación.
      *
      * @param numero Número de la habitación a eliminar.
      */
@@ -189,6 +189,55 @@ public class Hotel {
     }
 
     //-----------------------------------------------------//
+
+    //------------Métodos adicionales del taller-----------//
+    /**
+     * Cuenta el número de habitaciones disponibles en el hotel.
+     * @return Número de habitaciones que no están ocupadas.
+     */
+    public int contarHabitacionesDisponibles() {
+        int disponibles = 0;
+        for (Habitacion hab : habitaciones) {
+            if (hab.isDisponibilidad()) {
+                disponibles++;
+            }
+        }
+        return disponibles;
+    }
+
+    /**
+     * Calcula el porcentaje de ocupación del hotel.
+     * @return Porcentaje de habitaciones ocupadas en el hotel.
+     */
+    public double calcularPorcentajeOcupacion() {
+        if (habitaciones.isEmpty()) {
+            return 0.0;
+        }
+        int ocupadas = 0;
+        for (Habitacion hab : habitaciones) {
+            if (!hab.isDisponibilidad()) {
+                ocupadas++;
+            }
+        }
+        return (ocupadas * 100.0) / habitaciones.size();
+    }
+
+    /**
+     * Obtiene la habitación más barata disponible en el hotel.
+     * @return La habitación con el menor precio por noche que no esté ocupada, o null si no hay disponibles.
+     */
+    public Habitacion obtenerHabitacionMasBarataDisponible() {
+        Habitacion masBarata = null;
+        for (Habitacion hab : habitaciones) {
+            if (hab.isDisponibilidad()) {
+                if (masBarata == null || hab.getPrecio() < masBarata.getPrecio()) {
+                    masBarata = hab;
+                }
+            }
+        }
+        return masBarata;
+    }
+
 
     //-----------Getters y Setters de la clase-------------//
 

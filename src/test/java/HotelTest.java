@@ -79,4 +79,41 @@ public class HotelTest {
         hotel.eliminarHabitacion("101");
         assertNull(hotel.buscarHabitacion("101"), "La habitación debe haber sido eliminada.");
     }
+
+    @Test
+    public void testContarHabitacionesDisponibles() {
+        Habitacion habitacion1 = new Habitacion("101", tipoHabitacion.SIMPLE, 100.0);
+        habitacion1.setDisponibilidad(false);
+        hotel.agregarHabitacion(habitacion1);
+        Habitacion habitacion2 = new Habitacion("102", tipoHabitacion.DOBLE, 150.0);
+        hotel.agregarHabitacion(habitacion2);
+        Habitacion habitacion3 = new Habitacion("103", tipoHabitacion.SUITE, 200.0);
+        hotel.agregarHabitacion(habitacion3);
+        assertEquals(2, hotel.contarHabitacionesDisponibles());
+    }
+
+    @Test
+    public void testCalcularPorcentajeOcupacion() {
+        Habitacion habitacion1 = new Habitacion("101", tipoHabitacion.SIMPLE, 100.0);
+        hotel.agregarHabitacion(habitacion1);
+        habitacion1.setDisponibilidad(false);
+        Habitacion habitacion2 = new Habitacion("102", tipoHabitacion.DOBLE, 150.0);
+        hotel.agregarHabitacion(habitacion2);
+        Habitacion habitacion3 = new Habitacion("103", tipoHabitacion.SUITE, 200.0);
+        hotel.agregarHabitacion(habitacion3);
+        assertEquals(33.33, hotel.calcularPorcentajeOcupacion(), 0.01);
+    }
+
+    @Test
+    public void testObtenerHabitacionMasBarataDisponible() {
+        Habitacion habitacion1 = new Habitacion("101", tipoHabitacion.SIMPLE, 100.0);
+        hotel.agregarHabitacion(habitacion1);
+        Habitacion habitacion2 = new Habitacion("102", tipoHabitacion.DOBLE, 150.0);
+        hotel.agregarHabitacion(habitacion2);
+        Habitacion habitacion3 = new Habitacion("103", tipoHabitacion.SUITE, 200.0);
+        hotel.agregarHabitacion(habitacion3);
+        Habitacion barata = hotel.obtenerHabitacionMasBarataDisponible();
+        assertNotNull(barata);
+        assertEquals(habitacion1, hotel.obtenerHabitacionMasBarataDisponible());
+    }
 }

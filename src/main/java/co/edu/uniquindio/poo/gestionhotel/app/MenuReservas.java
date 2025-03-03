@@ -5,12 +5,11 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class MenuReservas {
-    private Scanner scanner;
-    private Hotel hotel;
+    static Scanner scanner = new Scanner(System.in);
+    private final Hotel hotel;
 
     public MenuReservas(Hotel hotel) {
         this.hotel = hotel;
-        this.scanner = new Scanner(System.in);
     }
 
     public void mostrarMenu() {

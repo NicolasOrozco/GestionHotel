@@ -5,7 +5,7 @@ import co.edu.uniquindio.poo.gestionhotel.model.*;
 import java.util.Scanner;
 
 class MenuHabitaciones {
-    private Hotel hotel;
+    private final Hotel hotel;
     static Scanner scanner = new Scanner(System.in);
 
     public MenuHabitaciones(Hotel hotel) {
@@ -28,7 +28,7 @@ class MenuHabitaciones {
         | 5. Volver al Menú Principal            |
         ==========================================
         
-        Seleccione una opción: """);
+        Seleccione una opción:""");
 
 
 

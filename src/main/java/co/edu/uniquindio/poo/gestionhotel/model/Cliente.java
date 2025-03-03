@@ -16,7 +16,7 @@ public class Cliente {
     public Cliente(String nombre, String dni) {
         this.nombre = nombre;
         this.dni = dni;
-        reservas = new LinkedList<Reserva>();
+        reservas = new LinkedList<>();
     }
 
     //-----------Getters y Setters de la clase-------------//

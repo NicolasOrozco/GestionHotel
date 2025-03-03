@@ -1,7 +1,5 @@
 package co.edu.uniquindio.poo.gestionhotel.model;
 
-import java.util.LinkedList;
-
 public class Habitacion {
 
     private String numero;
@@ -11,9 +9,9 @@ public class Habitacion {
 
     /**
      * Constructor público de la clase
-     * @param numero
-     * @param tipo
-     * @param precio
+     * @param numero numero de la habitacion
+     * @param tipo tipo de habitacion
+     * @param precio precio de la habitacion
      */
     public Habitacion(String numero, tipoHabitacion tipo, double precio) {
         this.numero = numero;

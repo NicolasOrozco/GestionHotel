@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 class MenuClientes {
     private Scanner scanner;
-    private Hotel hotel;
+    private final Hotel hotel;
 
     public MenuClientes(Hotel hotel) {
         this.hotel = hotel;

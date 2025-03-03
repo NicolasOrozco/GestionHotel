@@ -5,14 +5,14 @@ public abstract class Servicio implements Consumible{
 
     /**
      * Método constructor de la clase servicio
-     * @param id
+     * @param id id del servicio
      */
     public Servicio(String id) {
         this.id = id;
     }
 
     @Override
-    public void consumir(){};
+    public void consumir(){}
 
     //-----------Getters y Setters de la clase-------------//
 
