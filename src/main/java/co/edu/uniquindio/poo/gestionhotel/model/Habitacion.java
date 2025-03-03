@@ -8,7 +8,6 @@ public class Habitacion {
     private tipoHabitacion tipo;
     private double precio;
     private boolean disponibilidad;
-    private LinkedList<Servicio> servicios;
 
     /**
      * Constructor público de la clase
@@ -21,7 +20,6 @@ public class Habitacion {
         this.tipo = tipo;
         this.precio = precio;
         disponibilidad = true;
-        servicios = new LinkedList<>();
     }
 
     //-----------Getters y Setters de la clase-------------//
@@ -58,11 +56,4 @@ public class Habitacion {
         this.disponibilidad = disponibilidad;
     }
 
-    public LinkedList<Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(LinkedList<Servicio> servicios) {
-        this.servicios = servicios;
-    }
 }

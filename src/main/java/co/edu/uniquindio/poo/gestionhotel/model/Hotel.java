@@ -190,7 +190,7 @@ public class Hotel {
 
     //-----------------------------------------------------//
 
-        //-----------Getters y Setters de la clase-------------//
+    //-----------Getters y Setters de la clase-------------//
 
         public String getNombre () {
             return nombre;
@@ -231,4 +231,7 @@ public class Hotel {
         public void setGestorReservas (GestorReservas gestorReservas){
             this.gestorReservas = gestorReservas;
         }
+
+    //-----------------------------------------------------//
+
     }

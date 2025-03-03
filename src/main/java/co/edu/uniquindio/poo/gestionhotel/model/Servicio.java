@@ -1,11 +1,20 @@
 package co.edu.uniquindio.poo.gestionhotel.model;
 
-public abstract class Servicio {
+public abstract class Servicio implements Consumible{
     String id;
+
+    /**
+     * Método constructor de la clase servicio
+     * @param id
+     */
     public Servicio(String id) {
         this.id = id;
     }
-    public abstract void servicioHabitacion();
+
+    @Override
+    public void consumir(){};
+
+    //-----------Getters y Setters de la clase-------------//
 
     public void setId(String id) {
         this.id = id;
@@ -13,4 +22,7 @@ public abstract class Servicio {
     public String getId() {
         return id;
     }
+
+    //-----------------------------------------------------//
+
 }

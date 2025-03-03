@@ -26,71 +26,101 @@ public class GestorReservas {
         }
         return instancia;
     }
-    //-------------------Cruds Reservas--------------------//
 
-    public boolean verificarReserva(String dniCliente, String numeroHabitacion, LocalDate fechaEntrada) {
-        boolean verificado = false;
-        for(Reserva reserva : reservas){
-            if(reserva.getCliente().getDni().equals(dniCliente) && reserva.getHabitacion().getNumero().equals(numeroHabitacion) && reserva.getFechaEntrada().equals(fechaEntrada)){
-                verificado = true;
-            }
+    //-------------------CRUD Reservas--------------------//
+
+    /**
+     * Método para buscar una reserva por su id.
+     *
+     * @param id de la reserva
+     * @return Reserva encontrada o null si no existe.
+     */
+    public Reserva buscarReserva(String id) {
+
+        if (id == null) {
+            throw new IllegalArgumentException("No se ingresó un id valido.");
         }
-        return verificado;
+
+        for (Reserva reserva : reservas) {
+            if(reserva.getId().equals(id)) {
+                return reserva;
+            }
+
+        }
+
+        return null;
     }
 
-    public void agregarReserva(Reserva reserva){
-        try {
-            if (verificarReserva(reserva.getCliente().getDni(), reserva.getHabitacion().getNumero(),reserva.getFechaEntrada())) {
-                throw new Exception("Ya existe una reserva con esos datos");
-            }
-            reservas.add(reserva);
-            System.out.println("Reserva agregada con éxito");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    /**
+     * Método para agregar una nueva reserva.
+     *
+     * @param reserva Reserva a agregar.
+     */
+    public void agregarReserva(Reserva reserva) {
+
+        if (reserva == null) {
+            throw new IllegalArgumentException("No se ingresó la reserva que se desea agregar.");
+        }
+
+        if(buscarReserva(reserva.getId()) != null) {
+            System.out.println("Ya existe un servicio con ese id.");
+        }
+
+        reservas.add(reserva);
+        System.out.println("Reserva agregada exitosamente.");
+
+        /**if (buscarReserva(reserva.getFechaEntrada(), reserva.getCliente().getDni(), reserva.getHabitacion().getNumero()) != null) {
+            System.out.println("La habitación ya se encuentra registrada.");
+            return;
+        }*/
+
+    }
+
+    /**
+     * Método para actualizar los datos de una reserva.
+     *
+     * @praam id de la reserva
+     * @param actualizada Reserva con los nuevos datos.
+     */
+    public void actualizarReserva(String id, Reserva actualizada) {
+
+        if (actualizada == null) {
+            throw new IllegalArgumentException("Los datos de la reserva actualizada no pueden ser nulos.");
+        }
+
+        Reserva reserva = buscarReserva(id);
+        if (reserva != null) {
+            reserva.setFechaEntrada(actualizada.getFechaEntrada());
+            reserva.setFechaSalida(actualizada.getFechaSalida());
+            reserva.setCliente(actualizada.getCliente());
+            reserva.setHabitacion(actualizada.getHabitacion());
+            System.out.println("Reserva actualizada exitosamente.");
+        } else {
+            System.out.println("No existe una reserva con los datos ingresados.");
         }
     }
 
-    public void actualizarReservas(String dniCliente, String numeroHabitacion, Reserva actualizada){
-        try{
-            boolean encontrado = false;
-            for(Reserva reserva: reservas)
-            {
-                if(reserva.getCliente().getDni().equals(dniCliente) && reserva.getHabitacion().getNumero().equals(numeroHabitacion)){
-                    reserva.setFechaEntrada(actualizada.getFechaEntrada());
-                    reserva.setFechaSalida(actualizada.getFechaSalida());
-                    reserva.setCliente(actualizada.getCliente());
-                    reserva.setHabitacion(actualizada.getHabitacion());
-                    System.out.println("Reserva actualizada");
-                    encontrado = true;
-                    break;
-                }
-            }
-            if(!encontrado){
-                System.out.println("Reserva no encontrada");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    /**
+     * Método para eliminar una reserva.
+     *
+     * @param id de la reserva
+     */
+    public void eliminarReserva(String id) {
+
+        if (id == null) {
+            throw new IllegalArgumentException("El id ingresado no puede ser nulos.");
+        }
+
+        Reserva reserva = buscarReserva(id);
+        if (reserva != null) {
+            reservas.remove(reserva);
+            System.out.println("Reserva eliminada exitosamente.");
+        } else {
+            System.out.println("No existe una reserva con los datos ingresados.");
         }
     }
 
-    public void eliminarReserva(String dniCliente, String numeroHabitacion){
-        try{
-            boolean verificado = false;
-            for(Reserva reserva: reservas){
-                if(reserva.getCliente().getDni().equals(dniCliente)&&reserva.getHabitacion().getNumero().equals(numeroHabitacion)){
-                    reservas.remove(reserva);
-                    System.out.println("Reserva eliminada con exito");
-                    verificado = true;
-                    break;
-                }
-            }
-            if(!verificado){
-                System.out.println("Reserva no encontrada");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    //-----------------------------------------------------//
 
     //-----------Getters y Setters de la clase-------------//
 
