@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.gestionhotel;
+package co.edu.uniquindio.poo.gestionhotel.model;
 
 import java.time.LocalDate;
 
@@ -54,5 +54,20 @@ public class Reserva {
 
     public void setHabitacion(Habitacion habitacion) {
         this.habitacion = habitacion;
+    }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "fechaEntrada=" + fechaEntrada +
+                ", fechaSalida=" + fechaSalida +
+                ", cliente=" + cliente +
+                ", habitacion=" + habitacion +
+                ", id='" + id +
+                '}';
     }
 }

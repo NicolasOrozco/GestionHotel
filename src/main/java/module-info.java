@@ -1,8 +1,8 @@
 module co.edu.uniquindio.poo.gestionhotel {
-    requires javafx.controls;
-    requires javafx.fxml;
 
 
     opens co.edu.uniquindio.poo.gestionhotel to javafx.fxml;
-    exports co.edu.uniquindio.poo.gestionhotel;
+    exports co.edu.uniquindio.poo.gestionhotel.app;
+    exports co.edu.uniquindio.poo.gestionhotel.model;
+    opens co.edu.uniquindio.poo.gestionhotel.model to javafx.fxml;
 }

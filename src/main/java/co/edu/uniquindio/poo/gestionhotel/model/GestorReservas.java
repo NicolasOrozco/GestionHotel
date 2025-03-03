@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.gestionhotel;
+package co.edu.uniquindio.poo.gestionhotel.model;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -105,4 +105,14 @@ public class GestorReservas {
     public void setReservas(LinkedList<Reserva> reservas) {
         this.reservas = reservas;
     }
+
+    @Override
+    public String toString() {
+        return "GestorReservas{" +
+                "reservas=" + reservas +
+                '}';
+    }
+
+    //-----------------------------------------------------//
+
 }

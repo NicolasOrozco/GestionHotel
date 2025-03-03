@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.gestionhotel;
+package co.edu.uniquindio.poo.gestionhotel.model;
 
 public class ServicioSpa extends Servicio implements Consumible{
     public ServicioSpa(String id) {
