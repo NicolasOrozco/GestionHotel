@@ -52,7 +52,7 @@ public class MenuExtra {
                 default:
                     System.out.println("Opción inválida, intente de nuevo.");
             }
-        }while(opcion!= 6);
+        }while(opcion!= 4);
     }
 
     public void contarHabitaciones(){

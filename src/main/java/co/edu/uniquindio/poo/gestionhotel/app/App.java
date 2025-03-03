@@ -98,7 +98,7 @@ class MenuPrincipal {
                 default:
                     System.out.println("Opción inválida, intente de nuevo.");
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
 
         scanner.close();
     }
